@@ -13,8 +13,7 @@
 # [(1, 'a'), (2, 'b'), (3, 'c')]
 
 def combo(iterable_1, iterable_2):
-      list_of_tuples = []
-  for index in range(len(iterable_1)):
-    list_of_tuples.append((iterable_1[index], iterable_2[index]))
-
-  return list_of_tuples
+    list_of_tuples = []
+    for index in range(len(iterable_1)):
+        list_of_tuples.append((iterable_1[index], iterable_2[index]))
+    return list_of_tuples
