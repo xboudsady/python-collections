@@ -98,7 +98,6 @@ def game_loop():
         clear_screen()
 
 
-valid_moves = get_moves(player)
 clear_screen()
 print("Welcome to the dungion!")
 input("Press return to start!")
