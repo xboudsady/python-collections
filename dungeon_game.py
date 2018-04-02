@@ -28,12 +28,17 @@ def get_locations():
 
 
 def move_player(player, move):
-    # get the player's location
-    # if move == LEFT, x-1
-    # if move == RIGHT, x+1
-    # if move == UP, y-1
-    # if move == DOWN, y+1
-    return player
+    x, y = player   # get the player's location
+    if move == "LEFT":  # if move == LEFT, x-1
+        x -= 1
+    if move == "RIGHT": # if move == RIGHT, x+1
+        x += 1
+    if move == "UP":    # if move == UP, y-1
+        y -= 1
+    if move == "DOWN":  # if move == DOWN, y+1
+        y += 1
+    return x, y
+
 
 def get_moves(player):
     moves = ["LEFT", "RIGHT", "UP", "DOWN"]
@@ -52,9 +57,11 @@ moster, door, player = get_locations()
 
 
 while True:
+    valid_moves = get_moves(player)
+    clear_screen()
     print("Welcome to the dungion!")
     print("You're currently in room {}".format(player)) # fill with player position
-    print("You can move {}".format(", ".join(get_moves(player)))) # fill with available moves
+    print("You can move {}".format(", ".join(valid_moves))) # fill with available moves
     print("Enter QUIT to quit")
 
     move = input("> ")
@@ -62,6 +69,11 @@ while True:
 
     if move == 'QUIT':
         break
+    if move in valid_moves:
+        player = move_player(player, move)
+    else:
+        print("\n ** Walls are hard! Don't run into them! **\n")
+        continue
 
     # Good move? Change the player position
     # Bad move? Don't change anything!
